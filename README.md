@@ -5,9 +5,9 @@
 
 ### How to run
 ```
-    pip install -r requirements.txt
-    pytest 
-    python main.py
+pip install -r requirements.txt
+pytest 
+python main.py
 ```
 
 ### What could be done better 
