@@ -17,7 +17,7 @@ def create_reports(results: Iterable[Result], output_path: Path) -> None:
     :param output_path: path where reports will be placed. Will be created if not exists.
     """
     log.info(f'Creating reports in {output_path.absolute()}')
-    output_path.mkdir(parents=True, exist_ok=False)
+    output_path.mkdir(parents=True, exist_ok=True)
     with _objects_report_writer(path=output_path) as objects_report:
         with _levels_report_writer(path=output_path) as levels_report:
             for result in results:

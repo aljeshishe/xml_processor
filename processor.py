@@ -4,21 +4,22 @@ from pathlib import Path
 from zipfile import ZipFile
 
 from lxml import etree
-from typing import Iterator, Any
+from typing import Iterator, Any, Optional
 
 from result import Result
 
 log = logging.getLogger(__name__)
 
 
-def process_archives(input_path: Path) -> Iterator[Result]:
+def process_archives(input_path: Path, workers: Optional[int] = None) -> Iterator[Result]:
     """
     Processes zip files from input_path
     :param input_path: path where zip files are located
+    :param workers: how much workers to use
     :return: iterator with results
     """
     log.info(f'Processing zip files from {input_path.absolute()}')
-    with ProcessPoolExecutor() as pool:
+    with ProcessPoolExecutor(max_workers=workers) as pool:
         files = (file for file in input_path.glob('**/*.zip') if file.is_file())
         yield from _chain(pool.map(process_file, files))
 
