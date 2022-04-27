@@ -21,7 +21,6 @@ def create_reports(results: Iterable[Result], output_path: Path) -> None:
     with _objects_report_writer(path=output_path) as objects_report:
         with _levels_report_writer(path=output_path) as levels_report:
             for result in results:
-                log.info(f'Result {result.level}')
                 levels_report.send(result)
                 objects_report.send(result)
 

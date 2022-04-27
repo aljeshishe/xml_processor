@@ -29,7 +29,6 @@ def process_file(path: Path) -> list[Result]:
     Parses each archive
     :return: list with parsing results
     """
-    log.info(f'Processing {path}')
     with ZipFile(path) as fp:
         results = []
         for name in fp.namelist():

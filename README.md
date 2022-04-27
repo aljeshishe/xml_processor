@@ -6,12 +6,9 @@
 ### How to run
 ```
     pip install -r requirements.txt
+    pytest 
     python main.py
 ```
-### How to run integration test
-```
-    pytest 
-```    
 
 ### What could be done better 
     1. Write unittest
